@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刘彤彤 - 个人简历</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #5dbe8a;
+            --primary-light: #a8e6cf;
+            --primary-dark: #2d6a4f;
+            --bg: #f1f8f5;
+            --card-bg: #ffffff;
+            --text: #2c3e50;
+            --text-light: #5a6c7d;
+            --shadow: 0 4px 20px rgba(93, 190, 138, 0.15);
+            --shadow-hover: 0 8px 30px rgba(93, 190, 138, 0.25);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8f5 50%, #e0f2f1 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+            color: var(--text);
+            padding: 40px 0;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部 */
+        .header {
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        .header:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .avatar-wrap {
+            position: relative;
+        }
+
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-light);
+            transition: var(--transition);
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+
+        .avatar-ring {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 2px solid var(--primary-light);
+            border-radius: 50%;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .avatar-wrap:hover .avatar-ring {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .header-info h1 {
+            font-size: 36px;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .header-info .subtitle {
+            color: var(--text-light);
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(93, 190, 138, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(93, 190, 138, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* 区块标题 */
+        .section-title {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 15px 25px;
+            margin: 40px 0 20px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 500;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 信息网格 */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .info-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+            border-color: var(--primary-light);
+        }
+
+        .info-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-light);
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card ul {
+            list-style: none;
+        }
+
+        .info-card li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f4f0;
+            display: flex;
+            transition: var(--transition);
+        }
+
+        .info-card li:hover {
+            padding-left: 8px;
+            color: var(--primary-dark);
+        }
+
+        .info-card li:last-child {
+            border-bottom: none;
+        }
+
+        .info-card li b {
+            color: var(--primary);
+            min-width: 70px;
+            font-weight: 500;
+        }
+
+        /* 表格 */
+        .table-wrap {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary) 0%, #7dd3c0 100%);
+            color: white;
+            padding: 18px 20px;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #f0f4f0;
+            transition: var(--transition);
+        }
+
+        tr:hover td {
+            background: #f8fdf9;
+            color: var(--primary-dark);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* 技能 */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: #e8f5e9;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1s ease;
+        }
+
+        /* 工作经验 */
+        .styled-list {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            list-style: none;
+        }
+
+        .styled-list li {
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #f8fdf9 0%, #f0f9f4 100%);
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .styled-list li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(93, 190, 138, 0.2);
+        }
+
+        .styled-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .styled-list li::before {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* 自我介绍 */
+        .intro-box {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            line-height: 1.9;
+            color: var(--text-light);
+            font-size: 15px;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .intro-box:hover {
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 50px;
+            color: var(--text-light);
+        }
+
+        footer p {
+            position: relative;
+            display: inline-block;
+        }
+
+        footer p::before,
+        footer p::after {
+            content: '❀';
+            color: var(--primary-light);
+            margin: 0 15px;
+        }
+
+        /* 动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+    </style>
+    <base target="_blank">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header fade-in">
+            <div class="avatar-wrap">
+                <img src="西瓜.jpg" alt="头像" class="avatar">
+                <div class="avatar-ring"></div>
+            </div>
+            <div class="header-info">
+                <h1>刘彤彤</h1>
+                <p class="subtitle">上海对外经贸大学 · 本科在读</p>
+                <div class="header-links">
+                    <a href="form.html" class="btn">查看表单</a>
+                    <a href="school.html" class="btn btn-outline">学校布局</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 基本信息 -->
+        <div class="info-grid">
+            <div class="info-card fade-in delay-1">
+                <h3>基本信息</h3>
+                <ul>
+                    <li><b>性别</b> <span>女</span></li>
+                    <li><b>生日</b> <span>2006.01.29</span></li>
+                    <li><b>星座</b> <span>水瓶座</span></li>
+                    <li><b>爱好</b> <span>追剧、吃美食</span></li>
+                </ul>
+            </div>
+            <div class="info-card fade-in delay-1">
+                <h3>联系方式</h3>
+                <ul>
+                    <li><b>电话</b> <span>183****9486</span></li>
+                    <li><b>邮箱</b> <span>ltt@example.com</span></li>
+                    <li><b>微信</b> <span>miraitowa</span></li>
+                    <li><b>地址</b> <span>上海市松江区</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 教育背景 -->
+        <h2 class="section-title fade-in delay-2">教育背景</h2>
+        <div class="table-wrap fade-in delay-2">
+            <table>
+                <tr>
+                    <th>时间</th>
+                    <th>学校</th>
+                    <th>专业</th>
+                    <th>状态</th>
+                </tr>
+                <tr>
+                    <td>2024.09 - 2028.06</td>
+                    <td>上海对外经贸大学</td>
+                    <td>信息管理与信息系统</td>
+                    <td>在读</td>
+                </tr>
+                <tr>
+                    <td>2021.09 - 2024.06</td>
+                    <td>山西通宝育杰学校</td>
+                    <td>理科</td>
+                    <td>毕业</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 技能特长 -->
+        <h2 class="section-title fade-in delay-2">技能特长</h2>
+        <div class="skills-grid fade-in delay-2">
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>HTML/CSS</span>
+                    <span>50%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" data-width="50"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>JavaScript</span>
+                    <span>50%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" data-width="50"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>追剧鉴赏</span>
+                    <span>99%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" data-width="99"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>美食探索</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" data-width="90"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 工作经验 -->
+        <h2 class="section-title fade-in delay-3">工作经验</h2>
+        <ol class="styled-list fade-in delay-3">
+            <li>暂无正式工作经验，期待第一份实习机会</li>
+            <li>积极参与校园社团活动，锻炼组织协调能力</li>
+            <li>热爱学习新技术，提高自身能力</li>
+        </ol>
+
+        <!-- 自我介绍 -->
+        <h2 class="section-title fade-in delay-3">自我介绍</h2>
+        <div class="intro-box fade-in delay-3">
+            <p>大家好，我是刘彤彤，来自上海对外经贸大学的一名大二学生。我性格开朗活泼，喜欢与人交流，也享受独处追剧的时光。我平时喜欢看各种类型的电视剧和电影，我认为这是了解不同文化和故事的好方式。期待在未来的学习和工作中不断成长，结识更多志同道合的朋友！
+            </p>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>刘彤彤 · 上海对外经贸大学</p>
+    </footer>
+
+    <script>
+        // 技能条动画
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.skill-fill').forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = width + '%';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+
+</html>
