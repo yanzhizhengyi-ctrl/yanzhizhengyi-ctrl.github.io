@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学校网站布局 - Flexbox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 120px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 固定顶部 */
+        .fixed-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 顶部栏 */
+        .top-bar {
+            background: #2c3e50;
+            display: flex;
+            justify-content: center;
+        }
+
+        .top-bar > .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .top-links, .top-right {
+            display: flex;
+            gap: 10px;
+        }
+
+        .top-link {
+            width: 60px;
+            height: 20px;
+            background: white;
+        }
+
+        /* 导航 */
+        .nav {
+            background: #2980b9;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav > .container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 0;
+        }
+
+        .nav-item {
+            width: 80px;
+            height: 30px;
+            background: white;
+        }
+
+        /* 横幅 */
+        .banner {
+            background: #e74c3c;
+            display: flex;
+            justify-content: center;
+        }
+
+        .banner > .container {
+            height: 250px;
+        }
+
+        /* 主内容区 */
+        .main {
+            display: flex;
+            justify-content: center;
+        }
+
+        .main > .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* 第一行新闻 */
+        .news-row-1 {
+            display: flex;
+            gap: 10px;
+        }
+
+        .featured {
+            flex: 1;
+            height: 280px;
+            background: #e67e22;
+        }
+
+        .side-news {
+            flex: 1;
+            display: flex;
+            gap: 10px;
+        }
+
+        .side-card {
+            flex: 1;
+            background: #f39c12;
+        }
+
+        /* 第二行新闻 */
+        .news-row-2 {
+            display: flex;
+            gap: 10px;
+        }
+
+        .news-card {
+            flex: 1;
+            height: 180px;
+            background: #27ae60;
+        }
+
+        .news-card:nth-child(2) {
+            background: #8e44ad;
+        }
+
+        .news-card:nth-child(3) {
+            background: #16a085;
+        }
+
+        /* 媒体区 */
+        .media-section {
+            display: flex;
+            gap: 10px;
+        }
+
+        .media-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .media-item {
+            height: 60px;
+            background: #95a5a6;
+        }
+
+        /* 底部三栏 */
+        .bottom-section {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .bottom-col {
+            flex: 1;
+            height: 300px;
+        }
+
+        .bottom-col:nth-child(1) {
+            background: #3498db;
+        }
+
+        .bottom-col:nth-child(2) {
+            background: #2c3e50;
+        }
+
+        .bottom-col:nth-child(3) {
+            background: #1abc9c;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: #2c3e50;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .footer > .container {
+            height: 100px;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- 固定顶部 -->
+    <div class="fixed-top">
+        <!-- 顶部工具栏 -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-links">
+                    <div class="top-link"></div>
+                    <div class="top-link"></div>
+                    <div class="top-link"></div>
+                    <div class="top-link"></div>
+                    <div class="top-link"></div>
+                </div>
+                <div class="top-right">
+                    <div class="top-link"></div>
+                    <div class="top-link"></div>
+                    <div class="top-link"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 导航 -->
+        <div class="nav">
+            <div class="container">
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 横幅 -->
+    <div class="banner">
+        <div class="container"></div>
+    </div>
+
+    <!-- 主内容 -->
+    <div class="main">
+        <div class="container">
+            <!-- 第一行新闻 -->
+            <div class="news-row-1">
+                <div class="featured"></div>
+                <div class="side-news">
+                    <div class="side-card"></div>
+                    <div class="side-card"></div>
+                </div>
+            </div>
+
+            <!-- 第二行新闻 -->
+            <div class="news-row-2">
+                <div class="news-card"></div>
+                <div class="news-card"></div>
+                <div class="news-card"></div>
+            </div>
+
+            <!-- 媒体区 -->
+            <div class="media-section">
+                <div class="media-col">
+                    <div class="media-item"></div>
+                    <div class="media-item"></div>
+                    <div class="media-item"></div>
+                    <div class="media-item"></div>
+                </div>
+                <div class="media-col">
+                    <div class="media-item" style="background:#7b96b3"></div>
+                    <div class="media-item" style="background:#7b96b3"></div>
+                    <div class="media-item" style="background:#7b96b3"></div>
+                    <div class="media-item" style="background:#7b96b3"></div>
+                </div>
+            </div>
+
+            <!-- 底部三栏 -->
+            <div class="bottom-section">
+                <div class="bottom-col"></div>
+                <div class="bottom-col"></div>
+                <div class="bottom-col"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <div class="container"></div>
+    </div>
+</body>
+</html>
